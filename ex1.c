@@ -13,4 +13,5 @@ int main(){
     printf("%d secondes = %d heures, %d minutes et %d secondes", sec,heure, min , sec_reste);
     return 0;
 
-}
+} 
+// salut adam c'est ton super binome : Louis //
