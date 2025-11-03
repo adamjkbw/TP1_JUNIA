@@ -2,7 +2,17 @@
 
 int main() {
     int a;
-    b = 10;
+    int b = 10;
     printf("%d\n", b);
     return 0;
 }
+
+/*main.exe
+compil3.c: In function 'main':
+compil3.c:5:5: error: 'b' undeclared (first use in this function)
+     b = 10;
+     ^
+compil3.c:5:5: note: each undeclared identifier is reported only once for each function it appears in
+
+le code ne compile pas car on a pas attribué de type à la valeur b lors de son initiation.
+*/
