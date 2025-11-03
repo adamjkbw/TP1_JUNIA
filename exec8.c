@@ -2,7 +2,7 @@
 
 int main() {
     int t[3] = {10, 20, 30};
-    int i = 2;
+    size_t i = sizeof(t) / sizeof(t[0]) - 1;
     printf("%d\n", t[i]); 
     return 0;
 }
