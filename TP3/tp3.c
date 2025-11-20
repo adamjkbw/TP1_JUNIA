@@ -2,65 +2,98 @@
 
 int main()
 {
-    int n = 0;
-
-    printf("Saisissez une taille entre 5 et 10 : ");
+    int n;
+    printf("Saisissez une taille n (5 <= n <= 10) : ");
     scanf("%d", &n);
-
     int width = n * n;
-    int max_height = 3 * n - 1;
-    char img[100][100];
-
-    int mid = width / 2;
-
-    for (int i = 0; i < max_height; i++)
+    int max_height = n * 3 - 1;
+    char img[30][122];
+    for (int i = 0; i < 29; i++)
     {
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j < 121; j++)
         {
             img[i][j] = ' ';
         }
     }
 
-    img[0][mid] = 'A';
-    for (int i = 1; i < n; i++)
-    {
-        for (int j = 0; j < width; j++)
-        {
-            if (img[i - 1][j] != ' ')
-            {
-                img[i][j] = 'S';
-            }
+    int mid = width / 2;
 
-            else if (j == mid - i || j == mid + i)
-            {
-                img[i][j] = 'A';
-            }
-            else if (i == n - 1)
+    // boucle qui dessine la pointe
+    for (int i = 0; i < n; i++)
+    {
+        if (i == n - 1)
+        {
+            for (int j = 0; j < width; j++)
             {
                 img[i][j] = '_';
             }
         }
-    }
-
-    for (int i = n; i < n * 2 - n / 5; i++)
-    {
-        int largeur = width;
-        int min_largeur = 0;
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j < i * 2 + 1; j++)
         {
-            if (i == n && j == 0 || j == width - 1 && i == n || i == n + 1 && j == 3 || i == n + 1 && j == width - 3)
+            if (j == 0 || j == i * 2)
             {
-                img[i][j] = '"';
+                img[i][mid + (j - i)] = 'A';
             }
-            else if (i == n)
+            else
             {
-                img[i][j] = 'S';
+                img[i][mid + (j - i)] = 'S';
             }
         }
-        largeur -= 2;
-        min_largeur -= 2;
     }
 
+    // boucle qui dessine le centre de l'étoile
+    for (int i = n; i < n * 2 - 2; i++)
+    {
+        int largeur = 2 * i - 2 * n;
+        for (int j = largeur; j < width - largeur; j++)
+        {
+            img[i][j] = 'S';
+
+            if (j == largeur || j == width - largeur - 1)
+            {
+                img[i][j] = '.';
+                img[i][largeur + 1] = 'V';
+                img[i][width - largeur - 2] = 'V';
+            }
+        }
+    }
+
+    // boucle qui dessine les jambes
+    int ii = n * 2 - 2;
+    for (int i = 0; i < n + 1; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            img[ii][j] = 'S';
+        }
+
+        for (int j = 0; j < 2 * n - 4 - i; j++)
+        {
+            img[ii][j] = ' ';
+            img[ii][width - j - 1] = ' ';
+            if (j == 2 * n - 5 - i)
+            {
+                img[ii][width - j - 1] = '.';
+                img[ii][j] = '.';
+            }
+        }
+        // boucle qui dessine le centre
+        for (int j = mid - 2 * i; j < mid; j++)
+        {
+            img[ii][j] = ' ';
+            img[ii][width - j - 1] = ' ';
+            img[ii][mid] = ' ';
+            if (j == mid - 2 * i)
+            {
+                img[ii][width - j - 1] = '\"';
+                img[ii][j] = '\"';
+            }
+        }
+
+        ii++;
+    }
+
+    // boucle qui dessine l'étoile
     for (int i = 0; i < max_height; i++)
     {
         for (int j = 0; j < width; j++)
