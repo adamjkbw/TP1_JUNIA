@@ -20,6 +20,24 @@ int lireChoix()
     return choix;
 }
 
+int saisirNombreEleves()
+{
+    int nbEleves = 0;
+    while (nbEleves > 30 && nbEleves < 1)
+    {
+        printf("Entrez le nombre d'eleves (1 a 30) : ");
+        scanf("%d\n", nbEleves);
+        if (nbEleves > 30 && nbEleves < 1)
+        {
+            printf("Valeur invalide");
+        }
+        else
+        {
+            return nbEleves;
+        }
+    }
+}
+
 int main()
 {
     afficherMenu();
