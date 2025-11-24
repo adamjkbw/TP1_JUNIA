@@ -9,11 +9,20 @@ void afficherMenu()
     printf("4. Afficher la moyenne d'un eleve\n");
     printf("5. Afficher la moyenne generale \n");
     printf("6. Afficher la meilleure note de chaque controle\n");
-    printf("0. Quitter\n");
+    printf("0. Quitter\n\n");
+}
+
+int lireChoix()
+{
+    int choix;
+    printf("Votre choix : ");
+    scanf("%d\n", &choix);
+    return choix;
 }
 
 int main()
 {
     afficherMenu();
+    lireChoix();
     return 0;
 }
