@@ -76,26 +76,59 @@ float calculerMoyenneEleve(int notes[][3], int c)
     return ((float)notes[c][0] + (float)notes[c][1] + (float)notes[c][2]) / 3.0;
 }
 
-float calculerMoyenneGenerale(n)
+float calculerMoyenneGenerale(int n, int notes[][3])
 {
+    float res = 0;
     for (int i = 0; i < n; i++)
     {
+        res += calculerMoyenneEleve(notes, i);
     }
+    return res / (float)n;
+}
+
+int trouverMeilleureNoteControle(int note[][3], int c)
+{
+    int best = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        if (note[i][c - 1] > best)
+        {
+            best = note[i][c - 1];
+        }
+    }
+    return best;
+}
+
+void afficherMeilleuresNotes(int notes[][3])
+{
+    printf("Meilleure note au C1 : %d \n", trouverMeilleureNoteControle(notes, 1));
+    printf("Meilleure note C2  : %d \n", trouverMeilleureNoteControle(notes, 2));
+    printf("Meilleure note au C3 : %d \n", trouverMeilleureNoteControle(notes, 3));
 }
 
 int main()
 {
     int nbEleves = 0;
+
     afficherMenu();
     lireChoix();
+
     nbEleves = saisirNombreEleves();
+
     int notes[nbEleves][3];
+
     saisirNotes(notes, nbEleves);
+
     afficherNotes(notes, nbEleves);
+
     int eleveChoisi;
     printf("Entrez l'indice de l'eleve (1 a %d): ", nbEleves);
     scanf("%d", &eleveChoisi);
-    printf("Moyenne de l'eleve %d: %f", eleveChoisi, calculerMoyenneEleve(notes, eleveChoisi - 1));
+    printf("Moyenne de l'eleve %d: %f\n", eleveChoisi, calculerMoyenneEleve(notes, eleveChoisi - 1));
+
+    printf("Moyenne generale de la classe: %f\n", calculerMoyenneGenerale(nbEleves, notes));
+
+    afficherMeilleuresNotes(notes);
 
     return 0;
 }
