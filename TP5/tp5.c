@@ -11,7 +11,6 @@ int main()
     setlocale(LC_ALL, ".UTF-8");
     int choixx = 0;
     int conso[7] = {0};
-    charger(conso);
 
     while (choixx != 3)
     {
@@ -26,6 +25,7 @@ int main()
         {
             afficheResume(conso);
         }
+        sauvegarder(conso);
     }
 
     return 0;

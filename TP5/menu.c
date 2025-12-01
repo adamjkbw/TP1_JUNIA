@@ -70,3 +70,17 @@ int charger(int tab[7])
 
     return 1;
 }
+
+int sauvegarder(int tab[7])
+{
+    FILE *fichier = fopen("consommation.txt", "w");
+    for (int i = 0; i < 7; i++)
+    {
+        fputc(tab[i], fichier);
+    }
+    if (fichier == NULL)
+    {
+        return 0;
+    }
+    return 1;
+}
