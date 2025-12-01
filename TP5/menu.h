@@ -8,5 +8,6 @@ void menu();
 int choix();
 void initialiser();
 void ajouterConsommation(int tab[7]);
+void afficheResume(int tab[7]);
 
 #endif

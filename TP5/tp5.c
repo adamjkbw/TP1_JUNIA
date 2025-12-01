@@ -9,7 +9,7 @@ int main()
     SetConsoleCP(CP_UTF8);
     setlocale(LC_ALL, ".UTF-8");
     int choixx = 0;
-    int conso[7];
+    int conso[7] = {0};
 
     while (choixx != 3)
     {
@@ -18,6 +18,11 @@ int main()
         if (choixx == 1)
         {
             ajouterConsommation(conso);
+        }
+
+        if (choixx == 2)
+        {
+            afficheResume(conso);
         }
     }
 
