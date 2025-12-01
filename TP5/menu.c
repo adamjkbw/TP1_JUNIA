@@ -1,6 +1,7 @@
 #include "menu.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void menu()
 {
@@ -22,9 +23,9 @@ int choix()
     return choix;
 }
 
-void initialiser(tab)
+void initialiser(int tab[])
 {
-    tab = {0};
+    int blabla[7] = {0};
 }
 
 void ajouterConsommation(int tab[7])
@@ -52,4 +53,17 @@ void afficheResume(int tab[7])
     printf("Fruits   :   %d\n", tab[5]);
     printf("Proteines:   %d\n", tab[6]);
     printf("====================================\n");
+}
+
+int charger()
+{
+    FILE *fichier = fopen("consommation.txt", "r");
+    if (fichier == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
