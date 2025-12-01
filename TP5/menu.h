@@ -6,5 +6,7 @@
 
 void menu();
 int choix();
+void initialiser();
+void ajouterConsommation(int tab[7]);
 
 #endif
