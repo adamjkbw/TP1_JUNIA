@@ -11,7 +11,7 @@ int main()
     setlocale(LC_ALL, ".UTF-8");
     int choixx = 0;
     int conso[7] = {0};
-    // printf("%d", charger());
+    charger(conso);
 
     while (choixx != 3)
     {

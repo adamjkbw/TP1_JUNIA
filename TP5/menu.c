@@ -55,15 +55,18 @@ void afficheResume(int tab[7])
     printf("====================================\n");
 }
 
-int charger()
+int charger(int tab[7])
 {
+
     FILE *fichier = fopen("consommation.txt", "r");
     if (fichier == NULL)
     {
         return 0;
     }
-    else
+    for (int i = 0; i < 7; i++)
     {
-        return 1;
+        fscanf(fichier, "%d", &tab[i]);
     }
+
+    return 1;
 }
